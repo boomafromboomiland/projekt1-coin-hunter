@@ -13,38 +13,36 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 let panacek, panacekX, panacekY, panacekSirka, panacekVyska;
 let mince, minceX, minceY, minceSirka, minceVyska;
 
-let panacek = document.getElementById('panacek');
-let panacekY = window.innerHeight / 2;
-let panacekX = window.innerWidth / 2;
-let panacekSirka = panacek.width;
-let panacekVyska = panacek.height;
-let pohyb = 20;
-
 //nabehne pri loade
 function priNacitaniStranky() {
 
 	//panáčik a minca ako globálna premenná --> neskôr aj skóre, zvyky, fanfára
 	panacek = document.querySelector('#panacek');
-	mince = document.querySelector('#mince');
 
+	//šírka a výška panáčika
+	panacekSirka = panacek.width;
+	panacekVyska = panacek.height;
+
+	//panáčik v strede okna
+	panacekX = Math.round(window.innerWidth / 2 - panacekSirka / 2);
+	panacekY = Math.round(window.innerHeight / 2 - panacekVyska / 2);
+
+	//štartová pozícia panáka
+	poziciaPanacika();
+
+
+	//šírka a výška mince
+
+	//vygenerovanie prvej mince v náhodnej pozícii
 }
 
-//šírka a výška panáčika
-panacekSirka = panacek.width;
-panacekVyska = panacek.height;
-
-//umiestnenie panáčika v strede
 function poziciaPanacika() {
-	panacek.style.top = panacekY + "px";
-	panacek.style.left = panacekX + "px";
+	panacek.style.left = panacekX + 'px';
+	panacek.style.top = panacekY + 'px';
 }
 
-//šírka a výška mince
-
-//vygenerovanie prvej mince v náhodnej pouícii
-
-//funckia, ktorá sa spustí pri stlačení klávesy
-function pohybPanacika() {
+	//funckia, ktorá sa spustí pri stlačení klávesy
+function pohybPanacika(udalost) {
 
 	//šípka vľavo
 	if (udalost.key === 'ArrowLeft') {
@@ -71,6 +69,7 @@ function pohybPanacika() {
 			panacekY = 0;
 		}
 		panacek.src = 'obrazky/panacek-nahoru.png';
+	}
 
 	//šípka dole
 	if (udalost.key === 'ArrowDown') {
@@ -82,6 +81,7 @@ function pohybPanacika() {
 	}
 
 	//panáčik na novom mieste
+	poziciaPanacika();
 
 	//stret panáčika s mincou :(
 }

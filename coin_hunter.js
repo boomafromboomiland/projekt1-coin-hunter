@@ -12,6 +12,7 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 
 let panacek, panacekX, panacekY, panacekSirka, panacekVyska;
 let mince, minceX, minceY, minceSirka, minceVyska;
+let zvukMince, zvukFanfara;
 
 //nabehne pri loade
 function priNacitaniStranky() {
@@ -19,6 +20,8 @@ function priNacitaniStranky() {
 	//panáčik a minca ako globálna premenná --> neskôr aj skóre, zvyky, fanfára
 	panacek = document.querySelector('#panacek');
 	mince = document.querySelector('#mince');
+	zvukMince = document.querySelector('#zvukmince');
+	zvukFanfara = document.querySelector('#zvukfanfara');
 
 	//šírka a výška panáčika
 	panacekSirka = panacek.width;
@@ -31,15 +34,26 @@ function priNacitaniStranky() {
 	//štartová pozícia panáka
 	poziciaPanacika();
 
-
 	//šírka a výška mince
+	minceSirka = mince.width;
+	minceVyska = mince.height;
 
-	//vygenerovanie prvej mince v náhodnej pozícii
+	//snaha o vygenerovanie prvej mince v náhodnej pozícii
+	novaMince();
 }
 
+//umiestnenie panáka na svoje miesto
 function poziciaPanacika() {
 	panacek.style.left = panacekX + 'px';
 	panacek.style.top = panacekY + 'px';
+}
+
+//funkcia, ktorá by mala vygenerovať nové miesto pre mincu --> náhodne
+function novaMince() {
+	minceX = Math.round(Math.random() * (window.innerWidth - minceSirka));
+	minceY = Math.round(Math.random() * (window.innerHeight - minceVyska));
+	mince.style.left = minceX + 'px';
+	mince.style.top = minceY + 'px';
 }
 
 	//funckia, ktorá sa spustí pri stlačení klávesy
@@ -84,5 +98,14 @@ function pohybPanacika(udalost) {
 	//panáčik na novom mieste
 	poziciaPanacika();
 
-	//stret panáčika s mincou :(
+	//stret panáčika s mincou
+	kolizia()
+}
+
+
+//otestovanie stretu panáčika a mince --> použijeme nápovedu zo začiatku
+function kolizia() {
+if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
+	// panacek a mince se prekryvaji
+}
 }

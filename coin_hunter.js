@@ -18,6 +18,7 @@ function priNacitaniStranky() {
 
 	//panáčik a minca ako globálna premenná --> neskôr aj skóre, zvyky, fanfára
 	panacek = document.querySelector('#panacek');
+	mince = document.querySelector('#mince');
 
 	//šírka a výška panáčika
 	panacekSirka = panacek.width;

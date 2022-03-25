@@ -26,6 +26,9 @@ function priNacitaniStranky() {
 	zvukFanfara = document.querySelector('#zvukfanfara');
 	score = document.querySelector('#score');
 
+	//skóre
+	pocetMinci = 0;
+
 	//šírka a výška panáčika
 	panacekSirka = panacek.width;
 	panacekVyska = panacek.height;
@@ -43,7 +46,6 @@ function priNacitaniStranky() {
 
 	//snaha o vygenerovanie prvej mince v náhodnej pozícii
 	novaMinca();
-	pocetMinci = 0;
 }
 
 //umiestnenie panáka na svoje miesto
@@ -97,12 +99,6 @@ function pohybPanacika(udalost) {
 			panacekY = window.innerHeight - panacekVyska;
 		}
 		panacek.src = 'obrazky/panacek.png';
-	}
-
-	//hudba
-	if(hraHudba) {
-		document.querySelector('#hudba').play();
-		hraHudba = true;
 	}
 
 	//panáčik na novom mieste

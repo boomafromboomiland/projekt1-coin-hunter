@@ -14,6 +14,7 @@ let panacek, panacekX, panacekY, panacekSirka, panacekVyska;
 let mince, minceX, minceY, minceSirka, minceVyska;
 let zvukMince, zvukFanfara;
 let score; pocetMinci;
+let hraHudba = false;
 
 //nabehne pri loade
 function priNacitaniStranky() {
@@ -96,6 +97,12 @@ function pohybPanacika(udalost) {
 			panacekY = window.innerHeight - panacekVyska;
 		}
 		panacek.src = 'obrazky/panacek.png';
+	}
+
+	//hudba
+	if(hraHudba) {
+		document.querySelector('#hudba').play();
+		hraHudba = true;
 	}
 
 	//panáčik na novom mieste

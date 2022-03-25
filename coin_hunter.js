@@ -39,7 +39,7 @@ function priNacitaniStranky() {
 	minceVyska = mince.height;
 
 	//snaha o vygenerovanie prvej mince v náhodnej pozícii
-	novaMince();
+	novaMinca();
 }
 
 //umiestnenie panáka na svoje miesto
@@ -49,7 +49,7 @@ function poziciaPanacika() {
 }
 
 //funkcia, ktorá by mala vygenerovať nové miesto pre mincu --> náhodne
-function novaMince() {
+function novaMinca() {
 	minceX = Math.round(Math.random() * (window.innerWidth - minceSirka));
 	minceY = Math.round(Math.random() * (window.innerHeight - minceVyska));
 	mince.style.left = minceX + 'px';
@@ -105,7 +105,8 @@ function pohybPanacika(udalost) {
 
 //otestovanie stretu panáčika a mince --> použijeme nápovedu zo začiatku
 function kolizia() {
-if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
-	// panacek a mince se prekryvaji
-}
+	if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
+		// panacek a mince se prekryvaji
+		novaMinca();
+	}
 }

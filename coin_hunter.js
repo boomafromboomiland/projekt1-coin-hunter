@@ -101,19 +101,31 @@ function pohybPanacika(udalost) {
 		panacek.src = 'obrazky/panacek.png';
 	}
 
+	//hudba
+	if(!hraHudba) {
+		document.querySelector('#hudba').play();
+		console.log('Hrá hudba?');
+		hraHudba = true;
+	}
+
 	//panáčik na novom mieste
 	poziciaPanacika();
 
 	//stret panáčika s mincou
-	kolizia()
+	kolizia();
 }
 
 
 //otestovanie stretu panáčika a mince --> použijeme nápovedu zo začiatku
 function kolizia() {
 	if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
+
+		//cink
+		zvukMince.play();
+
 		//aktualizácia skóre
 		zvacsiScore();
+
 		// panacek a mince se prekryvaji
 		novaMinca();
 	}

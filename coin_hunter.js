@@ -120,4 +120,8 @@ function kolizia() {
 function zvacsiScore() {
 	pocetMinci = pocetMinci + 1;
 	score.innerText = pocetMinci; //aktualizácia skóre
+	if (pocetMinci === 5) {
+		zvukFanfara.play();
+		alert('Vyhral si! Gratulujeme.');
+	}
 }

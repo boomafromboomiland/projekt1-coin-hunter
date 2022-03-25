@@ -13,6 +13,7 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 let panacek, panacekX, panacekY, panacekSirka, panacekVyska;
 let mince, minceX, minceY, minceSirka, minceVyska;
 let zvukMince, zvukFanfara;
+let score; pocetMinci;
 
 //nabehne pri loade
 function priNacitaniStranky() {
@@ -22,6 +23,7 @@ function priNacitaniStranky() {
 	mince = document.querySelector('#mince');
 	zvukMince = document.querySelector('#zvukmince');
 	zvukFanfara = document.querySelector('#zvukfanfara');
+	score = document.querySelector('#score');
 
 	//šírka a výška panáčika
 	panacekSirka = panacek.width;
@@ -40,6 +42,7 @@ function priNacitaniStranky() {
 
 	//snaha o vygenerovanie prvej mince v náhodnej pozícii
 	novaMinca();
+	pocetMinci = 0;
 }
 
 //umiestnenie panáka na svoje miesto
@@ -109,4 +112,10 @@ function kolizia() {
 		// panacek a mince se prekryvaji
 		novaMinca();
 	}
+}
+
+//pripisovanie výsledkov
+function zvacsiScore() {
+	pocetMinci = pocetMinci + 1;
+	score.innerText = pocetMinci; //aktualizácia skóre
 }

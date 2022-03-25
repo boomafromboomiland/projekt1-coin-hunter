@@ -109,6 +109,8 @@ function pohybPanacika(udalost) {
 //otestovanie stretu panáčika a mince --> použijeme nápovedu zo začiatku
 function kolizia() {
 	if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
+		//aktualizácia skóre
+		zvacsiScore();
 		// panacek a mince se prekryvaji
 		novaMinca();
 	}

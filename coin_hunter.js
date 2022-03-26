@@ -14,6 +14,7 @@ let panacek, panacekX, panacekY, panacekSirka, panacekVyska;
 let mince, minceX, minceY, minceSirka, minceVyska;
 let zvukMince, zvukFanfara;
 let score; pocetMinci;
+let hraHudba = false;
 
 //nabehne pri loade
 function priNacitaniStranky() {
@@ -63,13 +64,6 @@ function novaMinca() {
 
 	//funckia, ktorá sa spustí pri stlačení klávesy
 function pohybPanacika(udalost) {
-	
-	//hudba
-	/*if (hraHudba) {
-		document.querySelector('#hudba').play();
-		console.log('Hrá hudba?');
-		hraHudba = true;
-	}*/
 
 	//šípka vľavo
 	if (udalost.key === 'ArrowLeft') {
@@ -112,6 +106,13 @@ function pohybPanacika(udalost) {
 
 	//stret panáčika s mincou
 	kolizia();
+		
+	//hudba
+	if (!hraHudba) {
+		document.querySelector('#hudba').play();
+		console.log('Hrá hudba?');
+		hraHudba = true;
+	}
 }
 
 
